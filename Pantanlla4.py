@@ -1,5 +1,7 @@
+from multiprocessing.sharedctypes import Value
 import sys
 from PySide2 import QtWidgets
+from numpy import double
 from ui_Pantanlla4 import *
 
 
@@ -10,11 +12,11 @@ class MyApp(QtWidgets.QMainWindow,Ui_MainWindow):
         self.setupUi(self)
         self.calcular.clicked.connect(self.calculos)
     def calculos(self):
-        Tg1=float(self.TG.value())
-        LL1=float(self.LL1P.value())
-        Tc=float(self.TC.value())
-        Ze=float(self.dat_z.value())
-        resultado="La cañeria del Tablero"+str(Tg1-Ze)+"La cañeria del Tablero"+str(Tc-Ze)+"La cañeria del Tablero"+str(LL1-Ze)
+        Tg1=double(self.TG.text())
+        LL1=double(self.LL1P.text())
+        Tc=double(self.TC.text())
+        Ze=double(self.dat_z.text())
+        resultado="La cañeria del Tablero General: "+str(Tg1-Ze)+"m"+"\nLa cañeria de Llave: "+str(Tc-Ze)+"m"+"\nLa cañeria Tomacorriente: "+str(LL1-Ze)+"m"
         self.textBrowser.setText(resultado)
 
 
